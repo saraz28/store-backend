@@ -22,3 +22,15 @@
 - dcrypt: **To hash and compare passwords securely**
 - db-migrate: **To manage database schema changes**
 - dotenv: **Loads environment variables**
+
+### Environment variables
+
+- POSTGRES_HOST = 127.0.0.1
+- POSTGRES_DB = store
+- POSTGRES_TEST_DB = store_test
+- POSTGRES_USER = postgres
+- POSTGRES_PASSWORD = S@zeer123
+- ENV=dev
+- BCRYPT_PASSWORD=speak-firend-and-enter
+- SALT_ROUNDS=10
+- TOKEN_SECRET=tokenSecret!
