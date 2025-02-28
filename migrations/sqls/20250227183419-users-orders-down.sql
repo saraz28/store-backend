@@ -1,1 +1,1 @@
-DROP TABLE users_orders;
+DROP TABLE IF EXISTS users_orders;

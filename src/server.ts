@@ -14,10 +14,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.get("/", cors(corsOptions), function (req: Request, res: Response) {
-  res.send("Hello World!");
-});
-
 product_routes(app);
 order_routes(app);
 user_routes(app);

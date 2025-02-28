@@ -1,4 +1,4 @@
-CREATE TABLE users_orders (
+CREATE TABLE IF NOT EXISTS users_orders (
   id SERIAL PRIMARY KEY,
   product_id INT REFERENCES products(id),
   user_id INT REFERENCES users(id),

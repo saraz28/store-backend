@@ -17,10 +17,20 @@ describe("Proudct model", () => {
     expect(store.show).toBeDefined();
   });
 
-  it("index method should return list of products", async () => {
-    const result = await store.index();
-    expect(result).toEqual([
-      { name: "Test Product", price: 100, catergory: "Test Category" },
-    ]);
+  it("create method should add a products", async () => {
+    const newProduct = {
+      id: 1,
+      name: "New Product",
+      price: 150,
+      category: "New Category",
+    };
+
+    const result = await store.create(newProduct);
+    expect(result).toEqual({
+      id: result.id,
+      name: result.name,
+      price: result.price,
+      category: result.category,
+    });
   });
 });

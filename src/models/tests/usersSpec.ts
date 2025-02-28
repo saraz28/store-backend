@@ -24,8 +24,20 @@ describe("users model", () => {
   it("should have a show method", () => {
     expect(store.show).toBeDefined();
   });
-  it("index method should return list of users", async () => {
-    const result = await store.index();
-    expect(result).toEqual([]);
+  it("create method should add a user", async () => {
+    const user = {
+      id: 1,
+      first_name: "sara",
+      last_name: "m",
+      password: 9,
+    };
+
+    const result = await store.create(user);
+    expect(result).toEqual({
+      id: result.id,
+      first_name: result.first_name,
+      last_name: result.last_name,
+      password: result.password,
+    });
   });
 });

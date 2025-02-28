@@ -8,7 +8,7 @@
     "build": "npx tsc",
     "jasmine": "jasmine",
     "tsc": "tsc",
-    "test": "ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test",
+    "test": "npm run build && ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test",
     "watch": "tsc-watch --noClear -p ./src/tsconfig.json --onSuccess \"node ./dist/server.js\""
   },
   "keywords": [],

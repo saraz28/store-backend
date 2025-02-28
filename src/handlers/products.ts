@@ -20,29 +20,28 @@ const show = async (req: Request, res: Response) => {
 
 // Create products
 const create = async (req: Request, res: Response) => {
-   try {
-     const authorizationHeader = req.headers.authorization || '';
-     const token = authorizationHeader.split(" ")[1];
-     const secret = process.env.TOKEN_SECRET;
+  try {
+    const authorizationHeader = req.headers.authorization || "";
+    const token = authorizationHeader.split(" ")[1];
+    const secret = process.env.TOKEN_SECRET;
 
-     if (!secret) {
-       throw new Error("TOKEN_SECRET environment variable is not defined");
-     }
-     jwt.verify(token, secret);
-   } catch (err) {
-     res.status(401);
-     res.json("Access denied, invalid token");
-     return;
-   }
+    if (!secret) {
+      throw new Error("TOKEN_SECRET environment variable is not defined");
+    }
+    jwt.verify(token, secret);
+  } catch (err) {
+    res.status(401);
+    res.json("Access denied, invalid token");
+    return;
+  }
 
   try {
     const product: Product = {
       name: req.body.name,
       price: req.body.price,
-      catergory: req.body.category,
+      category: req.body.category,
     };
-    
-    
+
     const newProduct = await store.create(product);
     res.json(newProduct);
   } catch (err) {
@@ -59,7 +58,7 @@ const destroy = async (req: Request, res: Response) => {
 const product_routes = (app: express.Application) => {
   app.get("/products", index);
   app.get("/products/:id", show);
-  app.post("/products",verifyAuthToken, create);
+  app.post("/products", verifyAuthToken, create);
   app.delete("/products/:id", destroy);
 };
 export default product_routes;

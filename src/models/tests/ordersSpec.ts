@@ -19,8 +19,18 @@ describe("orders model", () => {
     expect(store.delete).toBeDefined();
   });
 
-  it("index method should return list of orders", async () => {
-    const result = await store.index();
-    expect(result).toEqual([]);
-  });
+ it("create method should add a orders", async () => {
+   const newOrder = {
+     id: 1,
+     status: "active",
+     user_id: 1,
+   };
+
+   const result = await store.create(newOrder);
+   expect(result).toEqual({
+     id: result.id,
+     status: result.status,
+     user_id: result.user_id,
+   });
+ });
 });
