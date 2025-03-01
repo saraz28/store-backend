@@ -48,7 +48,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## Data Shapes
 
-![ER Diagram](assets/ER.png)
+![ER Diagram](src/assets/ER.png)
 
 #### Product
 
