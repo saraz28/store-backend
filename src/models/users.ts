@@ -86,16 +86,16 @@ export class Users {
     }
   }
   async addOrderByUser(
-    product_id: string,
-    users_id: string,
+    product_id: number,
+    user_id: string,
     quantity: number
   ): Promise<users> {
     try {
       const sql =
-        "INSERT INTO users_orders (product_id, users_id, quantity) VALUES ($1,$2,$3) RETURNING *";
+        "INSERT INTO users_orders (product_id, user_id, quantity) VALUES ($1,$2,$3) RETURNING *";
       // @ts-ignore
       const conn = await client.connect();
-      const result = await conn.query(sql, [product_id, users_id, quantity]);
+      const result = await conn.query(sql, [product_id, user_id, quantity]);
       const Addorder = result.rows[0];
       conn.release();
       return Addorder;

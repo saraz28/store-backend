@@ -60,13 +60,13 @@ const authenticate = async (req: Request, res: Response) => {
 
 //Create order for user
 const addNewOrder = async (req: Request, res: Response) => {
-  const product_id: string = req.body.product_id;
-  const users_id: string = req.params.id;
-  const quantity: number = parseInt(req.body.quantity);
+  const product_id: number = req.body.product_id;
+  const user_id: string = req.params.id;
+  const quantity: number = req.body.quantity;
   try {
     const addedOrder = await store.addOrderByUser(
       product_id,
-      users_id,
+      user_id,
       quantity
     );
     res.json(addedOrder);
