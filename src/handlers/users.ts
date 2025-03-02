@@ -6,13 +6,21 @@ import verifyAuthToken from "./utilities/authorization";
 const store = new Users();
 //Get users
 const index = async (req: Request, res: Response) => {
-  const user = await store.index();
-  res.json(user);
+  try {
+    const user = await store.index();
+    res.json(user);
+  } catch (err) {
+    throw new Error(`Could not get users. Error ${err}`);
+  }
 };
 //Get by id
 const show = async (req: Request, res: Response) => {
-  const user = await store.show(req.params.id);
-  res.json(user);
+  try {
+    const user = await store.show(req.params.id);
+    res.json(user);
+  } catch (err) {
+    throw new Error(`Could not get users by id. Error ${err}`);
+  }
 };
 
 //Create new users
@@ -78,8 +86,12 @@ const addNewOrder = async (req: Request, res: Response) => {
 
 //Delete users
 const destroy = async (req: Request, res: Response) => {
-  const deleted = await store.delete(req.body.id);
-  res.json(deleted);
+  try {
+    const deleted = await store.delete(req.body.id);
+    res.json(deleted);
+  } catch (err) {
+    throw new Error(`Could not delete users. Error ${err}`);
+  }
 };
 
 const user_routes = (app: express.Application) => {

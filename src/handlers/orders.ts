@@ -5,14 +5,22 @@ const store = new Orders();
 
 // Get orders
 const index = async (req: Request, res: Response) => {
-  const order = await store.index();
-  res.json(order);
+  try {
+    const order = await store.index();
+    res.json(order);
+  } catch (err) {
+    throw new Error(`Could not get orderd. Error ${err}`);
+  }
 };
 
 // Get order by id
 const orderById = async (req: Request, res: Response) => {
-  const order = await store.showOrderByID(req.params.id);
-  res.json(order);
+  try {
+    const order = await store.showOrderByID(req.params.id);
+    res.json(order);
+  } catch (err) {
+    throw new Error(`Could not get orders by id. Error ${err}`);
+  }
 };
 
 // Create order
@@ -47,8 +55,12 @@ const addProduct = async (req: Request, res: Response) => {
 
 // Delete order
 const destroy = async (req: Request, res: Response) => {
-  const deleted = await store.delete(req.body.id);
-  res.json(deleted);
+  try {
+    const deleted = await store.delete(req.body.id);
+    res.json(deleted);
+  } catch (err) {
+    throw new Error(`Could not delete orders. Error ${err}`);
+  }
 };
 
 const order_routes = (app: express.Application) => {

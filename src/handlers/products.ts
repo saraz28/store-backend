@@ -8,14 +8,22 @@ const store = new ProductList();
 
 //Get products
 const index = async (req: Request, res: Response) => {
-  const product = await store.index();
-  res.json(product);
+  try {
+    const product = await store.index();
+    res.json(product);
+  } catch (err) {
+    throw new Error(`Could not get products. Error ${err}`);
+  }
 };
 
 // Get by id
 const show = async (req: Request, res: Response) => {
-  const product = await store.show(req.params.id);
-  res.json(product);
+  try {
+    const product = await store.show(req.params.id);
+    res.json(product);
+  } catch (err) {
+    throw new Error(`Could not get products by id. Error ${err}`);
+  }
 };
 
 // Create products
@@ -51,8 +59,12 @@ const create = async (req: Request, res: Response) => {
 };
 // Delete products
 const destroy = async (req: Request, res: Response) => {
-  const deleted = await store.delete(req.body.id);
-  res.json(deleted);
+  try {
+    const deleted = await store.delete(req.body.id);
+    res.json(deleted);
+  } catch (err) {
+    throw new Error(`Could not delete products. Error ${err}`);
+  }
 };
 
 const product_routes = (app: express.Application) => {
