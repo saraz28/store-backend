@@ -12,7 +12,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json());
 
 product_routes(app);
 order_routes(app);
@@ -21,3 +21,4 @@ user_routes(app);
 app.listen(3000, function () {
   console.log(`starting app on: ${address}`);
 });
+export default app;
