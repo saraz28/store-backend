@@ -4,7 +4,7 @@ import app from "../../server";
 
 const request = supertest(app);
 
-describe("Order Routes", () => {
+describe("Order Api", () => {
   let app: express.Application;
   beforeEach(() => {
     app = express();
